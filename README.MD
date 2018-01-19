@@ -12,11 +12,12 @@
   ```
   这样子看起来，按序执行的貌似是对的，但是真的是这样子吗？我们再来看下面这样一段代码：
   ```javascript
+    
     console.log(1);
     function test() {
-      setTimeout(function () {
-        console.log('test');
-      })
+        setTimeout(function () {
+            console.log('test');
+        })
     }
     test();
     console.log(3);
