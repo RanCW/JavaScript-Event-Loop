@@ -108,9 +108,21 @@
    
    这个时候micro-task任务队列里面的任务也执行完了，那么这个时候Event Loop机制将会到macro-task任务队列当中去将满足条件的任务拿到执行环境栈中去执行，与micro-task任务队列执行的时候是一样的原理，这里就不再画图了，先是将1-callback拿到执行环境中去执行，控制台会输出1，执行完成后再将5-callback拿到执行环境栈中去执行，控制台输出6；
    所以最后控制台的输出结果是：2、4、end、3、5、1、6；
-   
-   
-
+  
+ ### 总结：
+  1. 主线程的执行环境栈上首先执行同步任务，然后再依靠Event Loop机制来不断循环将任务队列中的各个task放到执行环境栈中执行；
+  
+  2. 任务分为macro-task、micro-task，各有各的任务队列，即macro-task任务队列、micro-task任务队列；
+  
+  3. 总的执行顺序是 主线程上的task——micro-task——macro-task；
+  
+  参考资料：
+  
+  [JavaScript 运行机制详解：再谈Event Loop](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)
+  
+  [深入浅出JavaScript事件循环机制(下)](https://zhuanlan.zhihu.com/p/26238030)
+  
+  [node中文网](http://nodejs.cn/api/)
   
  
  
