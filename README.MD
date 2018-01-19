@@ -46,4 +46,18 @@
    整个执行过程如图所示;
    ![image](./1.png)
    
+   以上的执行顺序就是将console.log(1);加入到主线程，主线程有任务存在机会将任务先执行完再继续往下走，于是会输出1，再往下继续，将声明test函数任务放入主线程，声明完成后继续往下走，再执行test函数，于是主线程中又增加了test函数的执行，在执行的过程中会将console.log('test')添加到主线程，于是会输出‘test’;test函数执行完成后，代码继续往下执行，将console.log(3)添加到主线程当中。于是主线程会输出3，所以，最后的输出结果是——1、test、3
+   
+   那么这段代码又会是怎么样的呢？
+   ```javascript
+    console.log(1);
+    function test() {
+      setTimeout(function () {
+        console.log('test');
+      })
+    }
+    test();
+    console.log(3);
+```
+   
    
